@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+body {
+  background-color: #0f0f0f;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.112) 2%, transparent 5%);
+  background-size: 5px 5px;
+  font-family: Geist;
+  color: rgb(155, 154, 154);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.384)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.281));
+}
+
+a:hover {
+  transition: 0.3s;
+  color: white;
+  font-style: bold;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #1a1a1a;
+}
+
+#example {
+  width: 100vw;
+  max-width: 400px;
+  position: relative;
+}
+
+#example #progress {
+    position: absolute;
+    top: -65px;
+    left: -15px;
+    transform: rotate(-90deg);
+}
+
+#example .bg {
+    stroke: var(--layer);
+}
+
+#example #progress circle {
+    stroke-dashoffset: 0;
+    stroke-width: 10%;
+    fill: none;
+}
+
+#progress .indicator {
+    stroke: var(--accent);
+}
+
+#example ul {
+    display: flex;
+    list-style: none;
+    height: 220px;
+    overflow-x: scroll;
+    padding: 20px 0;
+    flex: 0 0 600px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+#example ::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background: #fff3;
+    -webkit-border-radius: 1ex;
+}
+
+#example ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    -webkit-border-radius: 1ex;
+}
+
+#example ::-webkit-scrollbar-corner {
+    background: #fff3;
+}
+
+#example li {
+    flex: 0 0 200px;
+    background: var(--accent);
+}

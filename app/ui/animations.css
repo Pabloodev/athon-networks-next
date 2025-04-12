@@ -1,0 +1,131 @@
+.letter {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.logo {
+  transition: transform 0.3s ease;
+}
+
+.letter.animate {
+  animation: float 4s ease-in-out;
+}
+
+.logo.animate {
+  animation: float 4s ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(var(--random-x1, 20px), var(--random-y1, -20px)) rotate(var(--random-rotate1, 45deg));
+  }
+  50% {
+    transform: translate(var(--random-x2, -30px), var(--random-y2, 15px)) rotate(var(--random-rotate2, -30deg));
+  }
+  75% {
+    transform: translate(var(--random-x3, 25px), var(--random-y3, 25px)) rotate(var(--random-rotate3, 15deg));
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Add random movement for each letter */
+.letter:nth-child(1) {
+  --random-x1: 30px;
+  --random-y1: -25px;
+  --random-x2: -20px;
+  --random-y2: 35px;
+  --random-x3: 15px;
+  --random-y3: -30px;
+  --random-rotate1: 45deg;
+  --random-rotate2: -30deg;
+  --random-rotate3: 15deg;
+}
+
+.letter:nth-child(2) {
+  --random-x1: -25px;
+  --random-y1: -30px;
+  --random-x2: 35px;
+  --random-y2: 20px;
+  --random-x3: -30px;
+  --random-y3: -15px;
+  --random-rotate1: -30deg;
+  --random-rotate2: 45deg;
+  --random-rotate3: -20deg;
+}
+
+.letter:nth-child(3) {
+  --random-x1: 35px;
+  --random-y1: 25px;
+  --random-x2: -25px;
+  --random-y2: -30px;
+  --random-x3: 20px;
+  --random-y3: 35px;
+  --random-rotate1: 30deg;
+  --random-rotate2: -45deg;
+  --random-rotate3: 25deg;
+}
+
+.logo {
+  --random-x1: -20px;
+  --random-y1: 30px;
+  --random-x2: 30px;
+  --random-y2: -25px;
+  --random-x3: -35px;
+  --random-y3: 20px;
+  --random-rotate1: -25deg;
+  --random-rotate2: 35deg;
+  --random-rotate3: -30deg;
+}
+
+.letter:nth-child(5) {
+  --random-x1: 25px;
+  --random-y1: 35px;
+  --random-x2: -35px;
+  --random-y2: -20px;
+  --random-x3: 30px;
+  --random-y3: -25px;
+  --random-rotate1: 35deg;
+  --random-rotate2: -25deg;
+  --random-rotate3: 40deg;
+}
+
+@keyframes waves {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+
+.float-icon {
+  animation: waves 3s ease-in-out infinite;
+}
+
+.float-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.float-icon:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.float-icon:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.float-icon:nth-child(4) {
+  animation-delay: 1.5s;
+}
