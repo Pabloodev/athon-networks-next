@@ -8,12 +8,6 @@ body {
   color: rgb(155, 154, 154);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.384)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.281));
-}
-
 a:hover {
   transition: 0.3s;
   color: white;
