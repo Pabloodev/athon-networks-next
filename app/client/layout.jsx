@@ -4,7 +4,9 @@ export default function ClientPage({ children }) {
   return (
     <div>
       <HeaderClient />
-      <div>{children}</div>
+      <div className="p-20 px-80 overflow-hidden">
+        {children}
+        </div>
     </div>
   );
 }
