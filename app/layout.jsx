@@ -5,6 +5,7 @@ import "./ui/animations.css";
 export const metadata = {
   title: "Athon Networks | Network Services",
   description: "Computação em nuvem, serviços de rede, soluções que ajudam sua empresa a fazer parte do futuro.",
+  icons: "./iconathon.png"
 };
 
 export default function RootLayout({ children }) {

@@ -41,7 +41,7 @@ export default function HeaderClient() {
 
           <img
             width={40}
-            src="./iconathon.png"
+            src="/iconathon.png"
             alt="Logo"
             className={`logo ${isAnimating ? "animate" : ""}`}
           />
@@ -72,7 +72,7 @@ export default function HeaderClient() {
         </nav>
         <button className="cursor-pointer flex items-center gap-3">
           <Avatar>
-            <AvatarImage src="./gunters.jpg" />
+            <AvatarImage src="/gunters.jpg" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <span className="text-white">Pablo Teixeira</span>

@@ -80,7 +80,7 @@ export default function Page() {
         </div>
 
         <div className="">
-          <h1 className="mb-3 text-white text-xl">Serviços em andamento</h1>
+          <h1 className="mb-3 text-white text-xl">Tickets em andamento</h1>
           <div className="border-1 border-gray-500 rounded-lg w-[400px] h-[200px]"></div>
         </div>
       </div>
