@@ -1,7 +1,7 @@
 "use client"
 
 import TextureArrayVisualizer from "../ui/components/TextureArrayVisualizer"
-import { LoginForm } from "@/components/login-form"
+import { RegisterForm } from "../../components/register-form"
 
 export default function LoginPage() {
   return (
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
         <div className="flex justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm />
+            <RegisterForm />
           </div>
         </div>
       </div>
