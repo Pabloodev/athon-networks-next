@@ -1,19 +1,22 @@
-'use client'; // se estiver usando App Router do Next.js
+'use client';
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
 
 const maxParticleCount = 1000;
 const r = 800;
 const rHalf = r / 2;
 
 const ThreeParticles = () => {
-  const containerRef = useRef();
-
+  const containerRef = useRef(null);
+  const isInitializedRef = useRef(false); // <- flag de controle
 
   useEffect(() => {
+    if (!containerRef.current || isInitializedRef.current) return;
+
+    isInitializedRef.current = true; // <- impede múltiplas inits
+
     let camera, scene, renderer, group;
     let particlesData = [];
     let positions, colors, particles, pointCloud, particlePositions, linesMesh;
@@ -26,14 +29,12 @@ const ThreeParticles = () => {
       minDistance: 150,
       limitConnections: false,
       maxConnections: 20,
-      particleCount: 500
+      particleCount: 500,
     };
 
+    const container = containerRef.current;
 
     const init = () => {
-      
-      const container = containerRef.current;
-
       camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
       camera.position.z = 1750;
 
@@ -60,7 +61,7 @@ const ThreeParticles = () => {
         size: 3,
         blending: THREE.AdditiveBlending,
         transparent: true,
-        sizeAttenuation: false
+        sizeAttenuation: false,
       });
 
       particles = new THREE.BufferGeometry();
@@ -77,7 +78,7 @@ const ThreeParticles = () => {
 
         particlesData.push({
           velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2),
-          numConnections: 0
+          numConnections: 0,
         });
       }
 
@@ -95,7 +96,7 @@ const ThreeParticles = () => {
       const material = new THREE.LineBasicMaterial({
         vertexColors: true,
         blending: THREE.AdditiveBlending,
-        transparent: true
+        transparent: true,
       });
 
       linesMesh = new THREE.LineSegments(geometry, material);
@@ -106,7 +107,6 @@ const ThreeParticles = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setAnimationLoop(animate);
       container.appendChild(renderer.domElement);
-
 
       window.addEventListener('resize', onWindowResize);
     };
@@ -130,7 +130,6 @@ const ThreeParticles = () => {
         particlePositions[i * 3 + 1] += particleData.velocity.y;
         particlePositions[i * 3 + 2] += particleData.velocity.z;
 
-        // bounce back
         if (particlePositions[i * 3 + 1] < -rHalf || particlePositions[i * 3 + 1] > rHalf) particleData.velocity.y *= -1;
         if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf) particleData.velocity.x *= -1;
         if (particlePositions[i * 3 + 2] < -rHalf || particlePositions[i * 3 + 2] > rHalf) particleData.velocity.z *= -1;
@@ -180,16 +179,18 @@ const ThreeParticles = () => {
 
       group.rotation.y = Date.now() * 0.001 * 0.1;
       renderer.render(scene, camera);
-
     };
 
     init();
 
     return () => {
-      while (containerRef.current.firstChild) {
-        containerRef.current.removeChild(containerRef.current.firstChild);
+      const container = containerRef.current;
+      if (container) {
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
       }
-
+      window.removeEventListener('resize', onWindowResize);
     };
   }, []);
 

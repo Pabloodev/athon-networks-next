@@ -5,7 +5,6 @@ import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Ellipsis } from 'lucide-react';
 
-
 export default function Page() {
   const [data, setData] = useState(null);
   const username = "lucas.net";

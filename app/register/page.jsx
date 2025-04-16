@@ -1,6 +1,6 @@
 "use client"
 
-import TextureArrayVisualizer from "../ui/components/TextureArrayVisualizer"
+import ThreeParticles from "../ui/components/ThreeParticles"
 import { RegisterForm } from "../../components/register-form"
 
 export default function LoginPage() {
@@ -8,7 +8,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen w-full items-center bg-black">
       {/* Lado Esquerdo - Animação */}
       <div className="w-1/2 flex items-center justify-center">
-      <TextureArrayVisualizer />
+      <ThreeParticles />
       </div>
 
       {/* Lado Direito - Formulário */}

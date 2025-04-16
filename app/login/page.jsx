@@ -1,5 +1,3 @@
-"use client"
-
 import ThreeParticles from "../ui/components/ThreeParticles"
 import { LoginForm } from "../../components/login-form"
 
