@@ -13,7 +13,7 @@ export default function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.28.18.58:7041/api/invoices", {
+        const response = await fetch("http://10.28.18.58:7047/api/invoices", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

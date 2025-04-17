@@ -32,7 +32,5 @@ export async function sign(formData) {
 
   await cookies().set("username", username); // Agora salva o nome do usuário
 
-  console.log(cookies.get("username"))
-
   redirect("/client");
 }

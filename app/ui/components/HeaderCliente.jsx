@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import LogoutButton from "./LogoutButton";
+import Dropdown from "./Dropdown";
 
 export default function HeaderClient() {
 
   const [user, setUser] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropActive, setDropActive] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -83,10 +84,16 @@ export default function HeaderClient() {
             ))}
           </ul>
         </nav>
-        <button className="cursor-pointer flex items-center gap-3">
-          <span className="text-white">{user ? user : "Carregando..."}</span>
-        </button>
-        <LogoutButton />
+        <div className="relative">
+        <button className="border-1 border-gray-500 rounded-sm bg-black text-center p-2 px-4 cursor-pointer flex items-center gap-3" onClick={() => setDropActive(prev => !prev)}>
+            <span className="text-white">{user ? user : "Carregando..."}</span>
+          </button>
+          {dropActive && (
+            <Dropdown />
+          )}
+        </div>
+        
+        
       </header>
     </motion.div>
   );

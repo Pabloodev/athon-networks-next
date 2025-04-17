@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import jwt from 'jsonwebtoken'
 
 const PUBLIC_ROUTES = ['/', '/login']
 
