@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
+import LogoutButton from "./LogoutButton";
 
 export default function HeaderClient() {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -77,6 +78,7 @@ export default function HeaderClient() {
           </Avatar>
           <span className="text-white">Pablo Teixeira</span>
         </button>
+        <LogoutButton />
       </header>
     </motion.div>
   );

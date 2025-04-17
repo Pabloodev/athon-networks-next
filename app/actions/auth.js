@@ -1,9 +1,11 @@
-"use server"
-import { redirect } from "next/navigation"
+"use server";
+
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 export async function sign(formData) {
-  const username = formData.get("user")
-  const password = formData.get("password")
+  const username = formData.get("user");
+  const password = formData.get("password");
 
   const res = await fetch("http://10.28.18.58:7047/api/login", {
     method: "POST",
@@ -11,15 +13,27 @@ export async function sign(formData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ username, password }),
-  })
+  });
 
-  const data = await res.json()
-  console.log(data)
-
-  if (data.token) {
-    redirect("/client") // isso é esperado e normal
+  if (!res.ok) {
+    const errorData = await res.json(); // Captura a mensagem de erro do servidor
+    return { error: errorData?.message || "Login inválido!" }; // Retorna o erro
   }
 
-  // se não tiver token, podemos lançar um erro customizado
-  throw new Error("Usuário ou senha inválidos")
+  const { token } = await res.json();
+
+  await cookies().set("token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+  });
+
+  console.log(token);
+
+  redirect("/client"); // Redireciona após login
+}
+
+export async function logout(params) {
+  
 }
