@@ -1,9 +1,8 @@
 import { BanknoteArrowUp, Headset } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Progress } from "@/components/ui/progress";
-import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
+import { Progress } from "@/app/ui/components/Progress";
+
 
 const cardsClient = [
   {
@@ -33,10 +32,9 @@ const placeHolder = [
   },
 ];
 
-export default function Page() {
-  const token = cookies().get("token")?.value;
-  const user = token ? jwt.decode(token) : null;
-  
+export default async function Page() {
+
+
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col">

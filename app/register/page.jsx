@@ -1,7 +1,7 @@
 "use client"
 
 import ThreeParticles from "../ui/components/ThreeParticles"
-import { RegisterForm } from "../../components/register-form"
+import { RegisterForm } from "../ui/components/Register-form"
 
 export default function LoginPage() {
   return (

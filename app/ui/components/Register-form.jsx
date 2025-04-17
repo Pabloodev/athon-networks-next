@@ -1,7 +1,7 @@
 import { cn } from "@/app/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/app/ui/components/Button"
+import { Input } from "@/app/ui/components/Input"
+import { Label } from "@/app/ui/components/Label"
 import Link from "next/link"
 
 export function RegisterForm({

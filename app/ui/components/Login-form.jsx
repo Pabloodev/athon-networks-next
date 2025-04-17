@@ -1,14 +1,21 @@
 "use client";
 
 import { cn } from "@/app/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/app/ui/components/Button";
+import { Input } from "@/app/ui/components/Input";
+import { Label } from "@/app/ui/components/Label";
 import Link from "next/link";
 
-import { sign } from "./../app/actions/auth";
+import { sign } from "../../actions/auth";
+import { useActionState } from "react";
+
+const initialState = {
+  message: ""
+}
 
 export function LoginForm({ className, ...props }) {
+
+  const [state, formAction, pending] = useActionState(sign, initialState)
 
   return (
     <form
@@ -64,7 +71,7 @@ export function LoginForm({ className, ...props }) {
           </Link>
         </div>
 
-        
+        <p aria-live="polite">{state?.message}</p>
 
         <Button type="submit" className="w-full cursor-pointer">
           Login

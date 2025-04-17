@@ -16,11 +16,12 @@ export async function sign(formData) {
   });
 
   if (!res.ok) {
-    const errorData = await res.json(); // Captura a mensagem de erro do servidor
-    return { error: errorData?.message || "Login inválido!" }; // Retorna o erro
+    return {message: "Login ou senha incorreto"}
   }
 
   const { token } = await res.json();
+
+  console.log(token)
 
   await cookies().set("token", token, {
     httpOnly: true,
@@ -29,11 +30,9 @@ export async function sign(formData) {
     path: "/",
   });
 
-  console.log(token);
+  await cookies().set("username", username); // Agora salva o nome do usuário
 
-  redirect("/client"); // Redireciona após login
-}
+  console.log(cookies.get("username"))
 
-export async function logout(params) {
-  
+  redirect("/client");
 }

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 import LogoutButton from "./LogoutButton";
 
 export default function HeaderClient() {
+
+  const [user, setUser] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,6 +27,18 @@ export default function HeaderClient() {
       href: "/",
     },
   ];
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch('/api/me');
+      const data = await response.json();
+
+      setUser(data.user); // Atualiza o estado com o valor
+    };
+
+    fetchUser();
+  }, []);
+
 
   return (
     <motion.div
@@ -59,9 +72,8 @@ export default function HeaderClient() {
         </button>
 
         <nav
-          className={`${
-            menuOpen ? "block" : "hidden"
-          } sm:flex absolute sm:static top-16 left-0 w-full sm:w-auto bg-zinc-900 sm:bg-transparent p-4 sm:p-0 shadow-lg sm:shadow-none rounded sm:rounded-none z-40`}
+          className={`${menuOpen ? "block" : "hidden"
+            } sm:flex absolute sm:static top-16 left-0 w-full sm:w-auto bg-zinc-900 sm:bg-transparent p-4 sm:p-0 shadow-lg sm:shadow-none rounded sm:rounded-none z-40`}
         >
           <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-gray-300">
             {navData.map((item, index) => (
@@ -72,11 +84,7 @@ export default function HeaderClient() {
           </ul>
         </nav>
         <button className="cursor-pointer flex items-center gap-3">
-          <Avatar>
-            <AvatarImage src="/gunters.jpg" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <span className="text-white">Pablo Teixeira</span>
+          <span className="text-white">{user ? user : "Carregando..."}</span>
         </button>
         <LogoutButton />
       </header>
