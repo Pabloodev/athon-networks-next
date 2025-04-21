@@ -6,12 +6,12 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen w-full items-center bg-black">
       {/* Lado Esquerdo - Animação */}
-      <div className="w-1/2 flex items-center justify-center">
+      <div className="w-1/2 items-center justify-center hidden md:flex">
         <ThreeParticles />
       </div>
 
       {/* Lado Direito - Formulário */}
-      <div className="w-1/3 flex flex-col justify-center gap-4">
+      <div className="w-full md:w-1/3 flex flex-col justify-center gap-4">
 
         <div className="flex justify-center">
 

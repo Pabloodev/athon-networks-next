@@ -59,7 +59,7 @@ export default function ScatterText() {
 
       <div className="" ref={containerRef}>
 
-        <p className="scatter text-2xl sm:text-3xl text-purple-400">Quebre a barreira entre você e o futuro!</p>
+        <p className="scatter text-xl sm:text-3xl text-purple-400">Quebre a barreira entre você e o futuro!</p>
       </div>
     </div>
   )

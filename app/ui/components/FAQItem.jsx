@@ -1,4 +1,4 @@
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import { ChevronDown } from "lucide-react";
 
 export default function FAQItem({ question, answer, isOpen, onClick }) {
   return (
@@ -7,19 +7,23 @@ export default function FAQItem({ question, answer, isOpen, onClick }) {
         className="w-full py-6 flex justify-between items-center text-left cursor-pointer"
         onClick={onClick}
       >
-        <span className="text-lg font-medium text-white">{question}</span>
+        <span className="text-sm sm:text-lg font-medium text-white">
+          {question}
+        </span>
         <ChevronDown
           className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
-            isOpen ? 'transform rotate-180' : ''
+            isOpen ? "transform rotate-180" : ""
           }`}
         />
       </button>
       <div
         className={`overflow-hidden transition-all duration-200 ease-in-out ${
-          isOpen ? 'max-h-96 pb-6' : 'max-h-0'
+          isOpen ? "max-h-96 pb-6" : "max-h-0"
         }`}
       >
-        <div className="text-gray-400 leading-relaxed">{answer}</div>
+        <div className="text-gray-400 text-sm sm:text-lg leading-relaxed">
+          {answer}
+        </div>
       </div>
     </div>
   );

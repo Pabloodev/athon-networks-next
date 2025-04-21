@@ -1,8 +1,11 @@
+"use client";
+
 import { BanknoteArrowUp, Headset } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Progress } from "@/app/ui/components/Progress";
-
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 const cardsClient = [
   {
@@ -32,13 +35,62 @@ const placeHolder = [
   },
 ];
 
-export default async function Page() {
+export default function Page() {
+  const [user, setUser] = useState("");
+  const [greeting, setGreeting] = useState("");
+  const [data, setData] = useState("");
 
+  const username = "lucas.net";
+  const password = "1Abx3825@@@@";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://10.28.18.58:7047/api/projects", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        });
+        const json = await response.json();
+        setData(json.projects);
+        console.log(json.projects);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    };
+
+    // Pegando o nome de usuario
+    const fetchUser = async () => {
+      const response = await fetch("/api/me");
+      const data = await response.json();
+
+      setUser(data.user);
+    };
+
+    // Pegando data para dar saudação dependendo da hora do dia
+    const now = new Date();
+    const hour = now.getHours();
+
+    if (hour > 5 && hour < 12) {
+      setGreeting("Bom dia");
+    } else if (hour >= 12 && hour < 18) {
+      setGreeting("Boa tarde");
+    } else if (hour >= 12 && hour < 18) {
+      setGreeting("Boa noite");
+    }
+
+    fetchData();
+    fetchUser();
+  }, []);
 
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col">
-        <h1 className="text-2xl text-white">Boa noite, Pablo</h1>
+        <h1 className="text-2xl text-white">
+          {greeting}, <span className="text-white">{user ? user : "..."}</span>
+        </h1>
         <p>
           Aqui você encontra um menu onde pode acompanhar seus serviçoes, enviar
           um ticket e exibir suas faturas.
@@ -62,27 +114,25 @@ export default async function Page() {
       <div className="flex items-center gap-5">
         <div className="">
           <h1 className="mb-3 text-white text-xl">Serviços contratados</h1>
-          <div className="flex items-center border-1 border-gray-500 rounded-lg w-[400px] h-[200px] p-10">
+          <div className="flex items-center rounded-lg  h-[200px] p-10">
             <ul className="flex gap-5 items-center justify-center">
-              {placeHolder.map((card, index) => (
-                <li className="flex flex-col items-center gap-2" key={index}>
-                  <Image
-                    src={card.thumb}
-                    width={120}
-                    height={120}
-                    alt="Thumbnail Service"
-                  />
-                  <Progress value={33} />
-                  <p className="text-white">{card.name}</p>
-                </li>
-              ))}
+              {data.length > 0 &&
+                data.map((project, index) => (
+                  <li key={index} className="flex flex-col gap-5 border border-gray-500 p-5 px-10 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer">
+                    <p className="text-white">{project.title}</p>
+                    <p
+                      className={clsx({
+                        "text-green-400": project.status === "Aberto",
+                        "text-yellow-500": project.status === "Em andamento",
+                      })}
+                    >
+                      {project.status}
+                    </p>
+                    <p>Manager: {project.project_manager}</p>
+                  </li>
+                ))}
             </ul>
           </div>
-        </div>
-
-        <div className="">
-          <h1 className="mb-3 text-white text-xl">Tickets em andamento</h1>
-          <div className="border-1 border-gray-500 rounded-lg w-[400px] h-[200px]"></div>
         </div>
       </div>
     </div>

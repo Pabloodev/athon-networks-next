@@ -35,7 +35,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
               className="w-full"
             >
-              <h1 className="text-4xl sm:text-6xl font-bold text-white glow mb-4 text-[3.2em] leading-[1.1] drop-shadow-[0_0_20px_rgba(255,255,255,0.384)] drop-shadow-[0_0_40px_rgba(255,255,255,0.281)]">
+              <h1 className="text-3xl sm:text-5xl font-bold text-white glow mb-4 text-[3.2em] leading-[1.1] drop-shadow-[0_0_20px_rgba(255,255,255,0.384)] drop-shadow-[0_0_40px_rgba(255,255,255,0.281)]">
                 {slidesData[currentSlide].title}
               </h1>
               <p className="text-sm sm:text-base max-w-md mx-auto text-gray-300">
@@ -49,9 +49,6 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
         </div>
-
-
-
         <div className="mt-10 md:mt-20">
           <CeoContainer />
         </div>
