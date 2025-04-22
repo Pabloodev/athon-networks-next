@@ -1,9 +1,7 @@
 "use client";
 
-import { BanknoteArrowUp, Headset, NotebookPen, Ellipsis } from "lucide-react";
+import { BanknoteArrowUp, Headset, SquareKanban, Ellipsis, ChartBar } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { Progress } from "@/app/ui/components/Progress";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
@@ -14,31 +12,22 @@ const cardsClient = [
     icon: BanknoteArrowUp,
   },
   {
-    name: "Abrir ticket",
-    link: "/client/openticket",
-    icon: NotebookPen,
+    name: "Serviços contratados",
+    link: "/client/services",
+    icon: SquareKanban,
   },
   {
-    name: "Tickets em aberto",
+    name: "Docs",
+    link: "/client/docs",
+    icon: ChartBar,
+  },
+  {
+    name: "Tickets",
     link: "/client/ticket",
     icon: Headset,
   },
 ];
 
-const placeHolder = [
-  {
-    thumb: "/dois.png",
-    name: "Athon docs",
-    status: "Ativo",
-    progress: "0.4",
-  },
-  {
-    thumb: "/um.png",
-    name: "Athon Captive",
-    status: "Ativo",
-    progress: "0.2",
-  },
-];
 
 export default function Page() {
   const [user, setUser] = useState("");
@@ -118,13 +107,13 @@ export default function Page() {
 
       <div className="flex items-center gap-5">
         <div className="">
-          <h1 className="mb-3 text-white text-xl">Serviços contratados</h1>
+          <h1 className="mb-3 text-white text-xl">Projetos em andamento</h1>
           <div className="flex items-center rounded-lg  h-[200px]">
             <ul className="flex gap-5 items-center justify-center">
               {data.length > 0 &&
                 data.map((project, index) => (
                   <li key={index} className="flex flex-col gap-5 border border-gray-500 p-5 px-10 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer">
-                    <Ellipsis className="self-start hover:text-shite" color="#fff"/>
+                    <Ellipsis className="self-start hover:text-shite" color="#fff" />
                     <p className="text-white">{project.title}</p>
                     <p
                       className={clsx({
