@@ -1,6 +1,6 @@
 "use client";
 
-import { BanknoteArrowUp, Headset } from "lucide-react";
+import { BanknoteArrowUp, Headset, NotebookPen, Ellipsis } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Progress } from "@/app/ui/components/Progress";
@@ -15,6 +15,11 @@ const cardsClient = [
   },
   {
     name: "Abrir ticket",
+    link: "/client/openticket",
+    icon: NotebookPen,
+  },
+  {
+    name: "Tickets em aberto",
     link: "/client/ticket",
     icon: Headset,
   },
@@ -114,11 +119,12 @@ export default function Page() {
       <div className="flex items-center gap-5">
         <div className="">
           <h1 className="mb-3 text-white text-xl">Serviços contratados</h1>
-          <div className="flex items-center rounded-lg  h-[200px] p-10">
+          <div className="flex items-center rounded-lg  h-[200px]">
             <ul className="flex gap-5 items-center justify-center">
               {data.length > 0 &&
                 data.map((project, index) => (
                   <li key={index} className="flex flex-col gap-5 border border-gray-500 p-5 px-10 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer">
+                    <Ellipsis className="self-start hover:text-shite" color="#fff"/>
                     <p className="text-white">{project.title}</p>
                     <p
                       className={clsx({

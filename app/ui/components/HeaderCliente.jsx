@@ -85,7 +85,7 @@ export default function HeaderClient() {
           </ul>
         </nav>
         <div className="relative">
-        <button className="border-1 border-gray-500 rounded-sm bg-black text-center p-2 px-4 cursor-pointer flex items-center gap-3" onClick={() => setDropActive(prev => !prev)}>
+        <button className="rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 p-2 border-1 border-gray-500" onClick={() => setDropActive(prev => !prev)}>
             <span className="text-white">{user ? user : "Carregando..."}</span>
           </button>
           {dropActive && (
