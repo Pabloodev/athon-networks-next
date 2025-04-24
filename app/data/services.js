@@ -1,11 +1,13 @@
-const services = [
+import { FileText, Eye, Bolt, Cloud, GlobeLock, Fullscreen, BrainCircuit, ListMinus, MonitorCog } from 'lucide-react';
+
+export const services = [
+
+  // Athon Docs
   {
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    Icon: FileText,
     title: "Athon Docs",
     description:
-      "Serviço exclusivo da Athon Networks, criado para oferecer uma solução robusta e prática na documentação de redes e infraestruturas empresariais.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Documentação técnica de redes e infraestrutura empresarial de forma organizada e eficiente.",
     services: [
       "Mapeamento Inteligente da Infraestrutura",
       "Gestão Centralizada de Dados",
@@ -20,12 +22,10 @@ const services = [
     ],
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1663040454423-30ce7ed209ad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    Icon: Eye,
     title: "Athon EYE",
     description:
-      "Serviço inovador da Athon Networks voltado para o monitoramento eficiente e em tempo real de ambientes empresariais.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Monitoramento em tempo real de ambientes corporativos, com alertas e métricas detalhadas.",
     services: [
       "Monitoramento em Tempo Real",
       "Soluções Sob Medida",
@@ -40,14 +40,11 @@ const services = [
       "Simplicidade na gestão de um sistema avançado de monitoramento.",
     ],
   },
-
   {
-    src: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=400&h=300",
+    icon: Bolt,
     title: "Athon Engineering",
     description:
-      "Formado por especialistas altamente qualificados em roteamento de redes e na aplicação de protocolos avançados.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Roteamento avançado de redes e aplicação de protocolos por especialistas certificados.",
     services: [
       "Domínio Avançado de Protocolos de Rede",
       "Arquiteturas Escaláveis e de Alto Desempenho",
@@ -63,12 +60,10 @@ const services = [
     ],
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1682145177356-33efa0ee06f1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: Cloud,
     title: "Athon Cloud",
     description:
-      "Especializado em implementar soluções em nuvem utilizando as principais plataformas do mercado: AWS, Oracle Cloud e Google Cloud.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Implantação de soluções em nuvem com AWS, Oracle Cloud e Google Cloud.",
     services: [
       "Estratégia Inteligente de Migração",
       "Infraestrutura Multi-Cloud Sob Medida",
@@ -84,12 +79,10 @@ const services = [
     ],
   },
   {
-    src: "https://images.unsplash.com/photo-1614064642261-3ccbfafa481b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: GlobeLock,
     title: "Athon CiberSec",
     description:
-      "Serviço de cibersegurança desenvolvido para proteger a infraestrutura digital de sua empresa contra ameaças crescentes no ambiente online.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Cibersegurança proativa para proteção da infraestrutura digital contra ameaças online.",
     services: [
       "Análise Profunda de Vulnerabilidades",
       "Defesa Avançada Contra Ameaças",
@@ -105,12 +98,10 @@ const services = [
     ],
   },
   {
-    src: "https://images.unsplash.com/photo-1588600878108-578307a3cc9d?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: Fullscreen,
     title: "Athon Supervisor",
     description:
-      "Solução completa da Athon Networks para o monitoramento e a gestão do desempenho de redes, servidores e aplicações.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Gerenciamento do desempenho de redes, servidores e aplicações em um único painel.",
     services: [
       "Monitoramento Inteligente e Centralizado",
       "Análises e Dashboards Avançados",
@@ -126,12 +117,10 @@ const services = [
     ],
   },
   {
-    src: "https://images.unsplash.com/photo-1677442135732-00cab8f454e1?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: BrainCircuit,
     title: "Athon Intelligence",
     description:
-      "Solução da Athon Networks para análise e visualização de dados empresariais. Projetado para empoderar empresas com insights valiosos.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Análise e visualização de dados empresariais para decisões estratégicas baseadas em insights.",
     services: [
       "Análise avançada de dados",
       "Painéis interativos e personalizáveis",
@@ -147,12 +136,11 @@ const services = [
     ],
   },
   {
-    src: "https://images.unsplash.com/photo-1543946602-a0fce8117697?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: ListMinus,
     title: "Athon Survey",
     description:
-      "Serviço especializado da Athon Networks para a criação de captive portals e configuração de hotspots, oferecendo soluções inovadoras.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Criação de captive portals e hotspots com interface personalizável e coleta de dados.",
+
     services: [
       "Criação e personalização de captive portals",
       "Configuração avançada de hotspots",
@@ -168,12 +156,11 @@ const services = [
     ],
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1700952001105-a71855bb0184?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    icon: MonitorCog,
     title: "Athon Virtualization",
     description:
-      "Serviço da Athon Networks especializado em virtualização de máquinas, utilizando as plataformas Proxmox e VMware.",
-    link: "#",
-    linkMessage: "Clique para saber mais",
+      "Virtualização de máquinas com Proxmox e VMware, aumentando a eficiência operacional.",
+
     services: [
       "Monitoramento Inteligente e Centralizado",
       "Análises e Dashboards Avançados",
@@ -189,5 +176,3 @@ const services = [
     ],
   },
 ];
-
-export default services;

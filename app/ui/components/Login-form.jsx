@@ -9,6 +9,7 @@ import { useState } from "react";
 import { sign } from "../../actions/auth";
 import { useActionState } from "react";
 import { EyeClosed, Eye } from "lucide-react";
+import Loading from "./Loading";
 
 const initialState = {
   message: "",
@@ -17,10 +18,13 @@ const initialState = {
 export function LoginForm({ className, ...props }) {
   const [state] = useActionState(sign, initialState);
   const [showPassword, setShowPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   return (
     <form
       action={sign}
+      onSubmit={() => setIsSubmitting(true)}
       className={cn("flex flex-col gap-6", className)}
       {...props}
     >
@@ -33,7 +37,7 @@ export function LoginForm({ className, ...props }) {
 
       <div className="grid gap-2">
         <div className="grid gap-3">
-          <Label htmlFor="user">User</Label>
+          <Label htmlFor="user">Usuário</Label>
           <Input
             id="user"
             type="text"
@@ -74,9 +78,15 @@ export function LoginForm({ className, ...props }) {
 
         <p aria-live="polite">{state?.message}</p>
 
-        <Button type="submit" className="w-full cursor-pointer">
-          Login
-        </Button>
+
+        {isSubmitting ? (
+          <Loading />
+        ) : (
+          <Button type="submit" className="w-full cursor-pointer">
+            Login
+          </Button>
+        )}
+
       </div>
     </form>
   );
