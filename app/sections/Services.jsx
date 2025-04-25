@@ -4,7 +4,6 @@ import { services } from "../data/services";
 import { ArrowUpRight, CheckCheck, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import Link from "next/link";
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
@@ -76,7 +75,7 @@ export default function Services() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex flex-col gap-4 p-5 rounded-lg">
+                <div className="flex flex-col gap-4 p-5 rounded-lg w-[650px]">
                   <div className="flex items-center justify-between w-full">
                     <h1 className="text-xl font-bold">
                       {selectedService.title}
@@ -114,13 +113,19 @@ export default function Services() {
                   </ul>
 
                   <div className="border-t border-gray-500">
-                    <div className="flex justify-between items-center">
-                      <p className=" mt-5">
+                    <div className="flex justify-between items-center mt-5">
+                      <p className="">
                         Entre em contato para saber mais sobre este serviço!
                       </p>
                       <div className="flex gap-2 items-center">
-                        <button>Fechar</button>
-                        <Link href='#'>Contatar</Link>
+                        <button onClick={() => setSelectedService(null)} className="border border-red-400 p-2 rounded-sm cursor-pointer duration-300 ease-out transform hover:scale-110 hover:bg-red-700">Fechar</button>
+                        <a
+                          href="https://wa.me/5511999999999?text=Olá%20gostaria%20de%20saber%20sobre%20os%20serviços%20da%20Athon%20Networks!"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <button className="p-2 border border-blue-500 rounded-sm cursor-pointer border border-blue-400 p-2 duration-300 ease-out transform hover:scale-110 hover:bg-blue-700">Contatar</button>
+                        </a>
                       </div>
                     </div>
                   </div>
