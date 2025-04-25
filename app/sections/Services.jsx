@@ -1,26 +1,25 @@
-'use client'
+"use client";
 
 import { services } from "../data/services";
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, CheckCheck, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X } from 'lucide-react';
+import Link from "next/link";
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
     if (selectedService) {
-      document.body.style.overflow = 'hidden'; // desativa scroll
+      document.body.style.overflow = "hidden"; // desativa scroll
     } else {
-      document.body.style.overflow = ''; // reativa scroll
+      document.body.style.overflow = ""; // reativa scroll
     }
 
     return () => {
-      document.body.style.overflow = ''; // garante reset ao desmontar
+      document.body.style.overflow = ""; // garante reset ao desmontar
     };
   }, [selectedService]);
-
 
   return (
     <div className="min-h-screen bg-black text-white relative" id="services">
@@ -44,7 +43,9 @@ export default function Services() {
                   className="p-5 border border-gray-500 w-[300px] h-[150px] rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/10 cursor-pointer flex flex-col gap-2"
                 >
                   <div className="flex items-center justify-between">
-                    <h2 className="text-white font-bold text-xl">{service.title}</h2>
+                    <h2 className="text-white font-bold text-xl">
+                      {service.title}
+                    </h2>
                     <ArrowUpRight />
                   </div>
                   <p className="text-gray-400">{service.description}</p>
@@ -75,10 +76,15 @@ export default function Services() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex flex-col gap-4 p-3 rounded-lg">
+                <div className="flex flex-col gap-4 p-5 rounded-lg">
                   <div className="flex items-center justify-between w-full">
-                    <h1 className="text-xl font-bold">{selectedService.title}</h1>
-                    <button onClick={() => setSelectedService(null)} className="cursor-pointer duration-300 ease-out">
+                    <h1 className="text-xl font-bold">
+                      {selectedService.title}
+                    </h1>
+                    <button
+                      onClick={() => setSelectedService(null)}
+                      className="cursor-pointer duration-300 ease-out transform hover:scale-110 hover:text-red-500"
+                    >
                       <X />
                     </button>
                   </div>
@@ -86,24 +92,39 @@ export default function Services() {
                   <div className="text-gray-300 text-sm">
                     {selectedService.description}
                   </div>
-                  
+
                   <ul className="flex flex-col gap-1">
-                    <p>Serviços</p>
+                    <p className="text-blue-500">Serviços</p>
                     {selectedService.services.map((service, index) => (
-                      <li className="" key={index}> - {service}</li>
+                      <li className="flex items-center gap-2" key={index}>
+                        <CheckCheck />
+                        <p className="text-gray-300">{service}</p>
+                      </li>
                     ))}
                   </ul>
 
                   <ul className="flex flex-col gap-1">
-                    <p>Beneficios</p>
+                    <p className="text-green-500">Beneficios</p>
                     {selectedService.beneficios.map((service, index) => (
-                      <li className="" key={index}> - {service}</li>
+                      <li className="flex items-center gap-2" key={index}>
+                        <CheckCheck />
+                        <p className="text-gray-300">{service}</p>
+                      </li>
                     ))}
                   </ul>
 
+                  <div className="border-t border-gray-500">
+                    <div className="flex justify-between items-center">
+                      <p className=" mt-5">
+                        Entre em contato para saber mais sobre este serviço!
+                      </p>
+                      <div className="flex gap-2 items-center">
+                        <button>Fechar</button>
+                        <Link href='#'>Contatar</Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-
               </motion.div>
             </>
           )}
