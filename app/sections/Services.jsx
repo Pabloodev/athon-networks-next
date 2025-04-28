@@ -23,7 +23,7 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-black text-white relative" id="services">
       <section className="container mx-auto px-6 sm:px-4 py-12 sm:py-24">
-        <div className="text-center sm:mb-16">
+        <div className="text-center sm:mb-20 mb-10">
           <p className="text-purple-500 font-medium mb-2 sm:mb-4">Services</p>
           <h2 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">
             De onde vem tudo isso?
@@ -69,63 +69,72 @@ export default function Services() {
 
               {/* Modal animado */}
               <motion.div
-                className="fixed top-1/2 left-1/2 z-50 transform -translate-x-1/2 -translate-y-1/2 bg-black border border-gray-500 rounded-lg flex flex-col gap-2"
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex flex-col gap-4 p-5 rounded-lg w-[650px]">
-                  <div className="flex items-center justify-between w-full">
-                    <h1 className="text-xl font-bold">
-                      {selectedService.title}
-                    </h1>
-                    <button
-                      onClick={() => setSelectedService(null)}
-                      className="cursor-pointer duration-300 ease-out transform hover:scale-110 hover:text-red-500"
-                    >
-                      <X />
-                    </button>
-                  </div>
+                <div className="bg-black border border-gray-500 rounded-lg w-full max-w-md mx-auto flex flex-col gap-2 p-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between w-full">
+                      <h1 className="text-lg sm:text-xl font-bold">
+                        {selectedService.title}
+                      </h1>
+                      <button
+                        onClick={() => setSelectedService(null)}
+                        className="cursor-pointer duration-300 ease-out transform hover:scale-110 hover:text-red-500"
+                      >
+                        <X />
+                      </button>
+                    </div>
 
-                  <div className="text-gray-300 text-sm">
-                    {selectedService.description}
-                  </div>
+                    <div className="text-gray-300 text-sm">
+                      {selectedService.description}
+                    </div>
 
-                  <ul className="flex flex-col gap-1">
-                    <p className="text-blue-500">Serviços</p>
-                    {selectedService.services.map((service, index) => (
-                      <li className="flex items-center gap-2" key={index}>
-                        <CheckCheck />
-                        <p className="text-gray-300">{service}</p>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="flex flex-col gap-1">
+                      <p className="text-blue-500 font-semibold">Serviços</p>
+                      {selectedService.services.map((service, index) => (
+                        <li className="flex items-center gap-2" key={index}>
+                          <CheckCheck />
+                          <p className="text-gray-300">{service}</p>
+                        </li>
+                      ))}
+                    </ul>
 
-                  <ul className="flex flex-col gap-1">
-                    <p className="text-green-500">Beneficios</p>
-                    {selectedService.beneficios.map((service, index) => (
-                      <li className="flex items-center gap-2" key={index}>
-                        <CheckCheck />
-                        <p className="text-gray-300">{service}</p>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="flex flex-col gap-1">
+                      <p className="text-green-500 font-semibold">Benefícios</p>
+                      {selectedService.beneficios.map((service, index) => (
+                        <li className="flex items-center gap-2" key={index}>
+                          <CheckCheck />
+                          <p className="text-gray-300">{service}</p>
+                        </li>
+                      ))}
+                    </ul>
 
-                  <div className="border-t border-gray-500">
-                    <div className="flex justify-between items-center mt-5">
-                      <p className="">
-                        Entre em contato para saber mais sobre este serviço!
-                      </p>
-                      <div className="flex gap-2 items-center">
-                        <button onClick={() => setSelectedService(null)} className="border border-red-400 p-2 rounded-sm cursor-pointer duration-300 ease-out transform hover:scale-110 hover:bg-red-700">Fechar</button>
-                        <a
-                          href="https://wa.me/5511999999999?text=Olá%20gostaria%20de%20saber%20sobre%20os%20serviços%20da%20Athon%20Networks!"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <button className="p-2 border border-blue-500 rounded-sm cursor-pointer border border-blue-400 p-2 duration-300 ease-out transform hover:scale-110 hover:bg-blue-700">Contatar</button>
-                        </a>
+                    <div className="border-t border-gray-500 pt-4">
+                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <p className="text-center sm:text-left text-sm">
+                          Entre em contato para saber mais sobre este serviço!
+                        </p>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => setSelectedService(null)}
+                            className="border border-red-400 p-2 rounded-sm cursor-pointer duration-300 ease-out transform hover:scale-110 hover:bg-red-700 text-sm"
+                          >
+                            Fechar
+                          </button>
+                          <a
+                            href="https://wa.me/5511999999999?text=Olá%20gostaria%20de%20saber%20sobre%20os%20serviços%20da%20Athon%20Networks!"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <button className="p-2 border border-blue-400 rounded-sm cursor-pointer duration-300 ease-out transform hover:scale-110 hover:bg-blue-700 text-sm">
+                              Contatar
+                            </button>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -71,7 +71,7 @@ export default function Page() {
       setGreeting("Bom dia");
     } else if (hour >= 12 && hour < 18) {
       setGreeting("Boa tarde");
-    } else if (hour >= 12 && hour < 18) {
+    } else {
       setGreeting("Boa noite");
     }
 
@@ -82,9 +82,14 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-20">
       <div className="flex flex-col">
-        <h1 className="text-2xl text-white">
-          {greeting}, <span className="text-white">{user ? user : "..."}</span>
-        </h1>
+        {greeting.length > 0 ? (
+          <h1 className="text-2xl text-white">
+            {greeting}, <span className="text-white">{user ? user : "..."}</span>
+          </h1>
+        ) : (
+          <div>Carregando</div>
+        )}
+
         <p>
           Aqui você encontra um menu onde pode acompanhar seus serviçoes, enviar
           um ticket e exibir suas faturas.
@@ -113,7 +118,7 @@ export default function Page() {
               {data.length > 0 &&
                 data.map((project, index) => (
                   <li key={index} className="flex flex-col gap-5 border border-gray-500 p-5 px-10 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer">
-                    <Ellipsis className="self-start hover:text-shite" color="#fff" />
+                    <Ellipsis className="self-start hover:text-white" color="#fff" />
                     <p className="text-white">{project.title}</p>
                     <p
                       className={clsx({
