@@ -39,7 +39,6 @@ export default function HeaderClient() {
     fetchUser();
   }, []);
 
-
   return (
 
     <header className="flex justify-between items-center px-6 sm:px-20 lg:px-40 mt-5">

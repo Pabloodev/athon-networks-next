@@ -1,12 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Ellipsis } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Ellipsis } from 'lucide-react';
+
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+} from "./../../ui/components/sheet"; // ajuste o caminho se necessário
 
 export default function Page() {
   const [data, setData] = useState(null);
+  const [selectedInvoice, setSelectedInvoice] = useState(null);
   const username = "lucas.net";
   const password = "1Abx3825@@@@";
 
@@ -21,7 +31,6 @@ export default function Page() {
           body: JSON.stringify({ username, password }),
         });
         const json = await response.json();
-        console.log(json);
         setData(json);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -38,24 +47,68 @@ export default function Page() {
         <span>Voltar ao menu</span>
       </Link>
       <h1 className="text-white text-2xl mt-10">Faturas</h1>
-      <p>Relatório de pagamentos, emissão de boleto e QR code, tudo de uma forma simples.</p>
+      <p>
+        Relatório de pagamentos, emissão de boleto e QR code, tudo de uma forma
+        simples.
+      </p>
 
-      <div className="p-10">
-        <ul>
-          {data?.invoices.length > 0 ? (
-            data.invoices.map((invoice, index) => (
-              <li className="border-1 border-gray-500 p-5 w-[200px] flex flex-col items-center gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl
-               hover:bg-white/5 cursor-pointer" key={index}>
-                <Ellipsis className="self-start hover:text-shite" color="#fff"/>
-                <p className="text-white">{invoice.ref}</p> {/* Substitua por campos reais do seu objeto */}
-                <p className="text-purple-500 font-bold">{invoice.total}</p>
-                <p className="text-green-200">{invoice.status}</p>
-              </li>
-            ))
-          ) : (
-            <p>Carregando...</p>
-          )}
-        </ul>
+      <div className="p-10 flex gap-4 flex-wrap">
+        {data?.invoices.length > 0 ? (
+          data.invoices.map((invoice, index) => (
+            <Sheet key={index}>
+              <SheetTrigger asChild>
+                <li
+                  onClick={() => setSelectedInvoice(invoice)}
+                  className="list-none border-1 border-gray-500 p-5 w-[200px] flex flex-col items-center gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer"
+                >
+                  <Ellipsis className="self-start" color="#fff" />
+                  <p className="text-white">{invoice.ref}</p>
+                  <p className="text-purple-500 font-bold">{invoice.total}</p>
+                  <p className="text-green-200">{invoice.status}</p>
+                </li>
+              </SheetTrigger>
+
+              <SheetContent side="right">
+                <SheetHeader>
+                  <SheetTitle className=" mb-5 flex flex-col gap-2">
+                    <p className="text-white text-xl">Detalhes da fatura</p>
+                    <p className="text-gray-300">Fatura: {selectedInvoice?.ref}</p>
+                  </SheetTitle>
+                  <SheetDescription className="text-white text-lg flex flex-col gap-2">
+                    <p className="text-purple-400 text-xl font-bold">{selectedInvoice?.total}</p>
+                    <p>
+                      Status:{" "}
+                      <span className="text-green-200">
+                        {selectedInvoice?.status}
+                      </span>
+                    </p>
+                  </SheetDescription>
+                </SheetHeader>
+
+                <div className="p-4 flex items-center gap-2">
+                  <button className="w-full hover:bg-purple-900 cursor-pointer bg-purple-800 text-white p-2 rounded-xl">
+                    Pagar com Pix
+                  </button>
+                  <button className="w-full border hover:border-blue-600 text-white p-2 rounded-xl">
+                    Gerar Boleto
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2 justify-center">
+                  <button className="cursor-pointer duration-300 ease-out transform hover:scale-110 hover:text-blue-500 ">2 via fatura</button>
+                </div>
+
+                <SheetFooter>
+                  <p className="text-xs text-center text-white">
+                    Pagamento seguro por Athon Telecom.
+                  </p>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
+          ))
+        ) : (
+          <p>Carregando...</p>
+        )}
       </div>
     </div>
   );
