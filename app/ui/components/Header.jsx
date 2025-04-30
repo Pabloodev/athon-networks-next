@@ -37,6 +37,10 @@ export default function Header() {
       title: "Contato",
       href: "#contact",
     },
+    {
+      title: "Portfolio",
+      href: "#contact",
+    },
   ];
 
   return (

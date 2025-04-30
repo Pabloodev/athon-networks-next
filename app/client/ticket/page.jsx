@@ -47,7 +47,7 @@ export default function Page() {
             {data && data.open_tickets && data.open_tickets.length > 0 ? (
               data.open_tickets.map((ticket, index) => (
                 <li
-                  className="border-1 border-gray-500 p-5 w-[200px] flex flex-col items-center gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer"
+                  className="border-1 border-gray-500 p-5 w-[200px] flex flex-col items-center justify-between gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer h-[180px]"
                   key={index}
                 >
                   <p>{ticket.subject}</p>
