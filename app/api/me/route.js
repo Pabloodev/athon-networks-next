@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function GET() {
-  const cookieStore = await cookies(); // você espera o cookies() primeiro
-  const user = cookieStore.get("username")?.value; // depois acessa o valor
+  const cookieStore = await cookies();
+  const user = cookieStore.get("username")?.value;
   return NextResponse.json({ user });
 }

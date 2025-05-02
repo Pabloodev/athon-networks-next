@@ -6,21 +6,16 @@ import { useState, useEffect } from "react";
 
 export default function Page() {
   const [data, setData] = useState(null);
-  const username = "lucas.net";
-  const password = "1Abx3825@@@@";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.28.18.58:7047/api/tickets", {
+        const response = await fetch("/api/tickets", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
         });
         const json = await response.json();
         setData(json);
+        console.log(json);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }

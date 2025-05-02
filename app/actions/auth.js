@@ -7,6 +7,10 @@ export async function sign(formData) {
   const username = formData.get("user");
   const password = formData.get("password");
 
+  if (!username || !password) {
+    return { error: true, message: "Usuário e senha são obrigatórios." };
+  }
+
   const res = await fetch("http://10.28.18.58:7047/api/login", {
     method: "POST",
     headers: {
@@ -16,21 +20,32 @@ export async function sign(formData) {
   });
 
   if (!res.ok) {
-    return {message: "Login ou senha incorreto"}
+    return { error: true, message: "Login ou senha incorretos." };
   }
 
   const { token } = await res.json();
 
-  console.log(token)
-
-  await cookies().set("token", token, {
+  const cookieStore = await cookies();
+  cookieStore.set("token", token, {
     httpOnly: true,
-    secure: true,
+    secure: false,
     sameSite: "lax",
     path: "/",
   });
 
-  await cookies().set("username", username); // Agora salva o nome do usuário
+  cookieStore.set("username", username, {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    path: "/",
+  });
+
+  cookieStore.set("password", password, {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    path: "/",
+  });
 
   redirect("/client");
 }

@@ -3,10 +3,9 @@
 import {
   BanknoteArrowUp,
   Headset,
-  SquareKanban,
   Ellipsis,
   ChartBar,
-  SquarePen
+  SquarePen,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,8 +17,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from "./../ui/components/sheet"; // ajuste o caminho se necessário
-import { Progress } from "./../ui/components/Progress"; // ajuste o caminho se necessário
+} from "./../ui/components/sheet";
+import { Progress } from "./../ui/components/Progress";
 
 const cardsClient = [
   {
@@ -27,11 +26,6 @@ const cardsClient = [
     link: "/client/invoices",
     icon: BanknoteArrowUp,
   },
-  // {
-  //   name: "Serviços contratados",
-  //   link: "/client/services",
-  //   icon: SquareKanban,
-  // },
   {
     name: "Docs",
     link: "/client/docs",
@@ -52,21 +46,14 @@ const cardsClient = [
 export default function Page() {
   const [user, setUser] = useState("");
   const [greeting, setGreeting] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const username = "lucas.net";
-  const password = "1Abx3825@@@@";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.28.18.58:7047/api/projects", {
+        const response = await fetch("/api/projects", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
         });
         const json = await response.json();
         setData(json.projects);
@@ -92,8 +79,9 @@ export default function Page() {
       setGreeting("Boa noite");
     }
 
-    fetchData();
     fetchUser();
+    fetchData();
+    console.log(data);
   }, []);
 
   return (
@@ -134,7 +122,7 @@ export default function Page() {
 
         <div className="p-4">
           <ul className="flex gap-4 overflow-x-auto overflow-y-hidden">
-            {data.length > 0 &&
+            {data ? (
               data.map((project, index) => (
                 <li key={index}>
                   <Sheet>
@@ -144,7 +132,7 @@ export default function Page() {
                         onClick={() => setSelectedProject(project)}
                       >
                         <Ellipsis className="self-start hover:text-white" />
-                        <p className="">{project.title}</p>
+                        <p>{project.title}</p>
                         <p
                           className={clsx({
                             "text-green-400": project.status === "Aberto",
@@ -218,7 +206,12 @@ export default function Page() {
                     </SheetContent>
                   </Sheet>
                 </li>
-              ))}
+              ))
+            ) : (
+              <div>
+                <p className="text-white">Carregando projetos...</p>
+              </div>
+            )}
           </ul>
         </div>
       </div>

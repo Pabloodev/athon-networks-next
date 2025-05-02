@@ -17,18 +17,12 @@ import {
 export default function Page() {
   const [data, setData] = useState(null);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
-  const username = "lucas.net";
-  const password = "1Abx3825@@@@";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://10.28.18.58:7047/api/invoices", {
+        const response = await fetch("/api/invoices", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
         });
         const json = await response.json();
         setData(json);
