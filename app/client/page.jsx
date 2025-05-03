@@ -146,32 +146,32 @@ export default function Page() {
                       </div>
                     </SheetTrigger>
 
-                    <SheetContent side="right">
+                    <SheetContent className="overflow-y-auto" side="right">
                       <SheetHeader>
                         <SheetTitle className="text-white">
                           {selectedProject?.title || "Projeto"}
                         </SheetTitle>
                         <SheetDescription>
-                          <div>
-                            Status:{" "}
-                            <span
-                              className={clsx("font-bold", {
-                                "text-green-400":
-                                  selectedProject?.status === "Aberto",
-                                "text-yellow-500":
-                                  selectedProject?.status === "Em andamento",
-                              })}
-                            >
-                              {selectedProject?.status}
-                            </span>
-                          </div>
 
-                          <div>
+                          Status:{" "}
+                          <span
+                            className={clsx("font-bold", {
+                              "text-green-400":
+                                selectedProject?.status === "Aberto",
+                              "text-yellow-500":
+                                selectedProject?.status === "Em andamento",
+                            })}
+                          >
+                            {selectedProject?.status}
+                          </span>
+
+
+                          
                             Gerente:{" "}
                             <span className="text-white">
                               {selectedProject?.project_manager}
                             </span>
-                          </div>
+                          
                         </SheetDescription>
                       </SheetHeader>
 

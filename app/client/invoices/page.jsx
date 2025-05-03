@@ -64,18 +64,18 @@ export default function Page() {
 
               <SheetContent side="right">
                 <SheetHeader>
-                  <SheetTitle className=" mb-5 flex flex-col gap-2">
-                    <p className="text-white text-xl">Detalhes da fatura</p>
-                    <p className="text-gray-300">Fatura: {selectedInvoice?.ref}</p>
+                  <SheetTitle className="mb-5 flex flex-col gap-2">
+                    <span className="text-white text-xl">Detalhes da fatura</span>
+                    <span className="text-gray-300">Fatura: {selectedInvoice?.ref}</span>
                   </SheetTitle>
                   <SheetDescription className="text-white text-lg flex flex-col gap-2">
-                    <p className="text-purple-400 text-xl font-bold">{selectedInvoice?.total}</p>
-                    <p>
+                    <span className="text-purple-400 text-xl font-bold">{selectedInvoice?.total}</span>
+                    <span>
                       Status:{" "}
                       <span className="text-green-200">
                         {selectedInvoice?.status}
                       </span>
-                    </p>
+                    </span>
                   </SheetDescription>
                 </SheetHeader>
 
@@ -83,13 +83,13 @@ export default function Page() {
                   <button className="w-full hover:bg-purple-900 cursor-pointer bg-purple-800 text-white p-2 rounded-xl">
                     Pagar com Pix
                   </button>
-                  <button className="w-full border hover:border-blue-600 text-white p-2 rounded-xl">
+                  <button className="w-full border transition duration-300 ease-out transform transition hover:border-blue-600 cursor-pointer text-white p-2 rounded-xl">
                     Gerar Boleto
                   </button>
                 </div>
 
                 <div className="flex items-center gap-2 justify-center">
-                  <button className="cursor-pointer duration-300 ease-out transform hover:scale-110 hover:text-blue-500 ">2 via fatura</button>
+                  <button className="cursor-pointer transition duration-300 ease-out transform hover:scale-110 hover:text-blue-500 ">2 via fatura</button>
                 </div>
 
                 <SheetFooter>
