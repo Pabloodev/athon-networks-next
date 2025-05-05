@@ -68,26 +68,26 @@ export default function Page() {
                       <SheetTitle>Detalhes do Ticket</SheetTitle>
                       <SheetDescription>
                         {selectedTicket ? (
-                          <div className="flex flex-col gap-2">
-                            <div>
+                          <span className="flex flex-col gap-2">
+                            <span>
                               <span className="text-white">Assunto: </span>
                               <span className="text-green-300">{selectedTicket.subject}</span>
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                               <span className="text-white">Criado em: </span>
                               <span className="text-orange-300">{selectedTicket.date_created}</span>
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                               <span className="text-white">Status: </span>
                               <span className="text-purple-300">{selectedTicket.status}</span>
-                            </div>
-                            <div className="flex flex-col gap-2 mt-10">
-                              <span className="text-white">Message: </span>
+                            </span>
+                            <span className="flex flex-col gap-2 mt-10">
+                              <span className="text-white">Mensagem: </span>
                               <span className="text-white">{selectedTicket.message}</span>
-                            </div>
-                          </div>
+                            </span>
+                          </span>
                         ) : (
-                          <div>Carregando ticket...</div>
+                          <span>Carregando ticket...</span>
                         )}
                       </SheetDescription>
                     </SheetHeader>

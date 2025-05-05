@@ -105,7 +105,7 @@ export default function Page() {
         {cardsClient.map((card, index) => (
           <li key={index}>
             <Link
-              className="flex flex-col w-[150px] md:w-[220px] gap-4 border border-gray-500 p-5 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 text-white"
+              className="flex flex-col h-[150px] w-[150px] md:w-[220px] gap-4 border border-gray-500 p-5 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 text-white"
               href={card.link}
             >
               <card.icon size={30} />
@@ -152,26 +152,18 @@ export default function Page() {
                           {selectedProject?.title || "Projeto"}
                         </SheetTitle>
                         <SheetDescription>
+                          <span className="flex items-center gap-2">
 
-                          Status:{" "}
-                          <span
-                            className={clsx("font-bold", {
+                            <span className={clsx("font-bold", {
                               "text-green-400":
                                 selectedProject?.status === "Aberto",
                               "text-yellow-500":
                                 selectedProject?.status === "Em andamento",
-                            })}
-                          >
-                            {selectedProject?.status}
+                            })}>Status: {selectedProject?.status}</span>
+
+                            <span className="text-white">Gerente: {selectedProject?.project_manager}</span>
                           </span>
 
-
-                          
-                            Gerente:{" "}
-                            <span className="text-white">
-                              {selectedProject?.project_manager}
-                            </span>
-                          
                         </SheetDescription>
                       </SheetHeader>
 

@@ -42,22 +42,31 @@ export default function HeaderClient() {
   return (
 
     <header className="flex justify-between items-center px-6 sm:px-20 lg:px-40 mt-5">
-      <div className="flex items-center gap-2">
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>N</span>
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>E</span>
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>T</span>
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>W</span>
+      <div className="flex items-center gap-2 hidden sm:flex">
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>N</span>
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>E</span>
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>T</span>
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>W</span>
+
+          <img
+            width={40}
+            src="./iconathon.png"
+            alt="Logo"
+            className={`logo ${isAnimating ? "animate" : ""}`}
+          />
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>R</span>
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>K</span>
+          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>S</span>
+
+        </div>
 
         <img
-          width={40}
-          src="/iconathon.png"
+          className="block sm:hidden"
+          width={60}
+          src="./iconathon.png"
           alt="Logo"
-          className={`logo ${isAnimating ? "animate" : ""}`}
+
         />
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>R</span>
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>K</span>
-        <span className={`letter ${isAnimating ? "animate" : ""}`}>S</span>
-      </div>
 
       <button
         className="sm:hidden text-gray-300"

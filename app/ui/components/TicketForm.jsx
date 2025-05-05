@@ -24,12 +24,10 @@ export default function TicketForm() {
       subject,
       message,
       priority,
-      username: "lucas.net",
-      password: "1Abx3825@@@@", // ⚠️ cuidado com credenciais no client
     };
 
     try {
-      const res = await fetch("http://10.28.18.58:7047/api/create-tickets", {
+      const res = await fetch("/api/openticket", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
