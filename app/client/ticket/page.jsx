@@ -54,7 +54,7 @@ export default function Page() {
                 <Sheet key={index}>
                   <SheetTrigger asChild>
                     <li
-                      className="border border-gray-500 p-5 w-[200px] flex flex-col items-center justify-between gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer h-[180px]"
+                      className="flex-wrap border border-gray-500 p-5 w-[200px] flex flex-col items-center justify-between gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer h-[180px]"
                       onClick={() => setSelectedTicket(ticket)}
                     >
                       <span className="font-semibold">{ticket.subject}</span>
@@ -80,6 +80,10 @@ export default function Page() {
                             <span>
                               <span className="text-white">Status: </span>
                               <span className="text-purple-300">{selectedTicket.status}</span>
+                            </span>
+                            <span>
+                              <span className="text-white">Status: </span>
+                              <span className="text-blue-300">{selectedTicket.id}</span>
                             </span>
                             <span className="flex flex-col gap-2 mt-10">
                               <span className="text-white">Mensagem: </span>

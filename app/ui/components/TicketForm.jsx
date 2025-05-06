@@ -91,10 +91,10 @@ export default function TicketForm() {
               <button
                 key={num}
                 onClick={handlePriorityClick}
-                className={`p-1 px-3 rounded-sm border ${
+                className={`p-1 px-3 rounded-sm border transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 text-white py-2 rounded border border-gray-500 cursor-pointer ${
                   priority === num
-                    ? "bg-purple-600 border-purple-500"
-                    : "border-gray-500 hover:border-purple-500"
+                    ? "bg-white/8 border-white"
+                    : "border-gray-500 hover:border-white-500"
                 }`}
                 type="button"
               >
@@ -105,7 +105,7 @@ export default function TicketForm() {
         </div>
 
         <button
-          className="mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition duration-300"
+          className="mt-4 transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 text-white py-2 rounded border border-gray-500 cursor-pointer"
           type="submit"
           disabled={loading}
         >

@@ -37,10 +37,10 @@ export default function Header() {
       title: "Contato",
       href: "#contact",
     },
-    {
-      title: "Portfolio",
-      href: "#contact",
-    },
+    // {
+    //   title: "Portfolio",
+    //   href: "#contact",
+    // },
   ];
 
   return (
@@ -52,20 +52,20 @@ export default function Header() {
       <header className="flex justify-between items-center px-6 sm:px-20 lg:px-40 mt-5">
 
         <div className="flex items-center gap-2 hidden sm:flex">
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>N</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>E</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>T</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>W</span>
+          <span className={`hidden sm:block letter`}>N</span>
+          <span className={`hidden sm:block letter`}>E</span>
+          <span className={`hidden sm:block letter`}>T</span>
+          <span className={`hidden sm:block letter`}>W</span>
 
           <img
             width={40}
             src="./iconathon.png"
             alt="Logo"
-            className={`logo ${isAnimating ? "animate" : ""}`}
+            className={`logo`}
           />
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>R</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>K</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>S</span>
+          <span className={`hidden sm:block letter`}>R</span>
+          <span className={`hidden sm:block letter`}>K</span>
+          <span className={`hidden sm:block letter`}>S</span>
 
         </div>
 

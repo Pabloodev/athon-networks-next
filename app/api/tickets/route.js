@@ -3,8 +3,9 @@
 import { cookies } from "next/headers";
 
 export async function POST() {
-  const username = cookies().get("username")?.value;
-  const password = cookies().get("password")?.value;
+  const cookieStore = await cookies();
+  const username = cookieStore.get("username")?.value;
+  const password = cookieStore.get("password")?.value;
 
   if (!username || !password) {
     return Response.json({ error: "Not authenticated" }, { status: 401 });

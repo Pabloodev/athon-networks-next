@@ -1,7 +1,6 @@
-import { Github, Disc as Discord, Twitter, Linkedin, Globe2, Send, Timer } from 'lucide-react';
+import { Linkedin, Instagram, Timer, Facebook } from 'lucide-react';
 import ContactForm from './ContactForm';
-import { Facebook } from 'lucide-react';
-import { Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,14 +37,12 @@ const Footer = () => {
               <div>
                 <h3 className="font-medium mb-4">Legal & Segurança</h3>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="#" className="hover:text-white">Termos de serviço</a></li>
-                  <li><a href="#" className="hover:text-white">Política de privacidade</a></li>
+                  <Link href={"/"} className="hover:text-white">Política de privacidade</Link>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Formulário de Contato */}
           <div id="contact" className="w-full md:w-1/2 text-center md:text-left">
             <h3 className="text-xl font-semibold mb-4">Contate-nos</h3>
             <ContactForm />
@@ -53,7 +50,6 @@ const Footer = () => {
 
         </div>
 
-        {/* Footer Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
           <div className='flex flex-col gap-2'>
             <p className="text-gray-400 text-sm mb-4 md:mb-0 text-center md:text-left">

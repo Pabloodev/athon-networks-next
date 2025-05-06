@@ -10,13 +10,13 @@ export default function Services() {
 
   useEffect(() => {
     if (selectedService) {
-      document.body.style.overflow = "hidden"; // desativa scroll
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""; // reativa scroll
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = ""; // garante reset ao desmontar
+      document.body.style.overflow = "";
     };
   }, [selectedService]);
 
@@ -97,7 +97,7 @@ export default function Services() {
                       <p className="text-blue-500 font-semibold">Serviços</p>
                       {selectedService.services.map((service, index) => (
                         <li className="flex items-center gap-2" key={index}>
-                          <CheckCheck />
+                          <CheckCheck size={20}/>
                           <p className="text-gray-300">{service}</p>
                         </li>
                       ))}
@@ -107,7 +107,7 @@ export default function Services() {
                       <p className="text-green-500 font-semibold">Benefícios</p>
                       {selectedService.beneficios.map((service, index) => (
                         <li className="flex items-center gap-2" key={index}>
-                          <CheckCheck />
+                          <CheckCheck size={20}/>
                           <p className="text-gray-300">{service}</p>
                         </li>
                       ))}

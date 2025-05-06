@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
@@ -8,18 +8,8 @@ import Dropdown from "./Dropdown";
 export default function HeaderClient() {
 
   const [user, setUser] = useState("");
-  const [isAnimating, setIsAnimating] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropActive, setDropActive] = useState(false)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => setIsAnimating(false), 4000);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const navData = [
     {
@@ -43,27 +33,27 @@ export default function HeaderClient() {
 
     <header className="flex justify-between items-center px-6 sm:px-20 lg:px-40 mt-5">
       <div className="flex items-center gap-2 hidden sm:flex">
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>N</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>E</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>T</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>W</span>
+          <span className={`hidden sm:block letter`}>N</span>
+          <span className={`hidden sm:block letter`}>E</span>
+          <span className={`hidden sm:block letter`}>T</span>
+          <span className={`hidden sm:block letter`}>W</span>
 
           <img
             width={40}
-            src="./iconathon.png"
+            src="/iconathon.png"
             alt="Logo"
-            className={`logo ${isAnimating ? "animate" : ""}`}
+            className={`logo`}
           />
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>R</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>K</span>
-          <span className={`hidden sm:block letter ${isAnimating ? "animate" : ""}`}>S</span>
+          <span className={`hidden sm:block letter`}>R</span>
+          <span className={`hidden sm:block letter`}>K</span>
+          <span className={`hidden sm:block letter`}>S</span>
 
         </div>
 
         <img
           className="block sm:hidden"
           width={60}
-          src="./iconathon.png"
+          src="/iconathon.png"
           alt="Logo"
 
         />

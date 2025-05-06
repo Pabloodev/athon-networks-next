@@ -120,7 +120,7 @@ export default function Page() {
           Projetos em andamento
         </h1>
 
-        <div className="p-4">
+        <div className="pt-4">
           <ul className="flex gap-4 overflow-x-auto overflow-y-hidden">
             {data ? (
               data.map((project, index) => (
