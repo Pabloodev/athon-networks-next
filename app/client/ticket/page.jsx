@@ -47,7 +47,7 @@ export default function Page() {
         <div className="flex flex-col gap-5">
           <h2 className="text-lg text-white">Tickets em aberto</h2>
 
-          <ul className="flex items-center gap-2">
+          <ul className="flex items-center gap-2 flex-wrap">
             {data && data.open_tickets && data.open_tickets.length > 0 ? (
               data.open_tickets.map((ticket, index) => (
                 <Sheet key={index}>
@@ -56,7 +56,9 @@ export default function Page() {
                       className="flex-wrap border border-gray-500 p-5 w-[200px] flex flex-col items-center justify-between gap-2 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/5 cursor-pointer h-[180px]"
                       onClick={() => setSelectedTicket(ticket)}
                     >
-                      <span className="font-semibold">{ticket.subject}</span>
+                      <span className="font-semibold text-center break-words line-clamp-2">
+                        {ticket.subject}
+                      </span>
                       <span className="text-orange-500 text-sm">{ticket.date_created}</span>
                       <span className="text-green-300 text-sm">{ticket.status}</span>
                     </li>
