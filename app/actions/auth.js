@@ -11,7 +11,7 @@ export async function sign(formData) {
     return { error: true, message: "Usuário e senha são obrigatórios." };
   }
 
-  const res = await fetch("http://10.28.18.58:7047/api/login", {
+  const res = await fetch("http://10.28.18.110:7047/api/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -19,7 +19,7 @@ export async function POST(req) {
     priority: body.priority,
   };
 
-  const response = await fetch("http://10.28.18.58:7047/api/create-tickets", {
+  const response = await fetch("http://10.28.18.110:7047/api/create-tickets", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

@@ -11,7 +11,7 @@ export async function POST() {
     return Response.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const response = await fetch("http://10.28.18.58:7047/api/tickets", {
+  const response = await fetch("http://10.28.18.110:7047/api/tickets", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
